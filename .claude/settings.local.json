@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git)",
+      "Bash(npx create-next-app@latest . --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git --yes)",
+      "Read(//c/Users/91623/Desktop/A.I Project/**)",
+      "Bash(npx create-next-app@latest portfolio-temp --typescript --tailwind --eslint --app --src-dir=false --import-alias=\"@/*\" --no-git --yes)",
+      "Bash(npm install *)",
+      "Bash(npx tsc *)",
+      "Bash(node -e \"const l = require\\('lucide-react'\\); const keys = Object.keys\\(l\\).filter\\(k => /github|linkedin|git|link/i.test\\(k\\)\\); console.log\\(keys.join\\('\\\\n'\\)\\)\")",
+      "Bash(npm run *)",
+      "Bash(Start-Sleep -Seconds 8)",
+      "Bash(Get-Content \"C:\\\\Users\\\\91623\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-91623-Desktop-A-I-Project-PortFolio\\\\2fc33b90-81ef-4c57-9cf2-870397e0922d\\\\tasks\\\\buvpx1ih8.output\" -ErrorAction SilentlyContinue)",
+      "Bash(Select-Object -Last 20)"
+    ]
+  }
+}
