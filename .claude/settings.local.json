@@ -13,7 +13,9 @@
       "Bash(Get-Content \"C:\\\\Users\\\\91623\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-91623-Desktop-A-I-Project-PortFolio\\\\2fc33b90-81ef-4c57-9cf2-870397e0922d\\\\tasks\\\\buvpx1ih8.output\" -ErrorAction SilentlyContinue)",
       "Bash(Select-Object -Last 20)",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "PowerShell(Get-ChildItem -Path \"C:\\\\Users\\\\91623\\\\Desktop\\\\A.I Project\\\\PortFolio\" -Force | Where-Object { -not $_.PSIsContainer -and $_.Name -notmatch '^\\\\.' } | Select-Object Name)",
+      "Bash(npx next *)"
     ]
   }
 }

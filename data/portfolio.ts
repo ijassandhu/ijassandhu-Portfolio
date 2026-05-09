@@ -10,18 +10,19 @@ export const personalInfo = {
 } as const;
 
 export const heroContent = {
-  eyebrow: "AI Engineer · LLM Systems · RAG · Document AI",
+  eyebrow: "AI Engineer / LLM Systems / RAG / Document AI",
   headline: "Building practical AI systems with LLMs, RAG, and automation.",
   paragraph:
     "I build AI-powered applications for document intelligence, retrieval systems, and workflow automation.",
   supporting:
-    "Based in Chandigarh, India · Open to AI Engineer roles, freelance AI automation projects, and collaborations.",
+    "Based in Chandigarh, India. Open to AI Engineer roles, freelance AI automation projects, and collaborations.",
 } as const;
 
 export const navLinks = [
+  { label: "Works", href: "#projects" },
+  { label: "Archive", href: "#archive" },
   { label: "About", href: "#about" },
   { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
 ] as const;
 
 export const credibilityItems = [
@@ -35,7 +36,7 @@ export const profileSkillTags = ["LLM", "RAG", "Document AI", "Automation"] as c
 
 export const aboutContent = {
   paragraphs: [
-    "I'm an AI Engineer focused on building practical AI systems — not just prototypes. My work spans LLMs, RAG pipelines, document AI, prompt engineering, and workflow automation.",
+    "I'm an AI Engineer focused on building practical AI systems, not just prototypes. My work spans LLMs, RAG pipelines, document AI, prompt engineering, and workflow automation.",
     "Most of my recent work involves LLM-powered extraction systems for industrial MTR PDFs, converting complex unstructured documents into reliable structured outputs. I combine prompt engineering, validation logic, and automation tools to build workflows that actually work in production.",
     "I got drawn into AI because of how quickly it's reshaping the way real-world problems can be solved. What drives me is making AI systems that are reliable and genuinely useful, not just impressive in demos.",
   ],
@@ -56,7 +57,7 @@ export const aboutContent = {
   education: {
     degree: "B.Tech in Computer Science",
     institution: "Chandigarh Group of Colleges, Landran",
-    period: "2022 – 2026",
+    period: "2022 - 2026",
   },
 } as const;
 
@@ -65,7 +66,7 @@ export const experiences = [
     role: "AI Engineer Intern",
     company: "EOXS",
     location: "Toronto, Ontario, Canada",
-    period: "March 2026 – Present",
+    period: "March 2026 - Present",
     current: true,
     bullets: [
       "Developed an LLM-powered pipeline to extract structured data from industrial MTR PDFs.",
@@ -77,7 +78,7 @@ export const experiences = [
     role: "Software Engineering Trainee",
     company: "My Virtual Teams",
     location: "Ludhiana, India",
-    period: "Dec 2025 – Feb 2026",
+    period: "Dec 2025 - Feb 2026",
     current: false,
     bullets: [
       "Built and experimented with LLM-based systems, including RAG pipelines and multimodal assistants.",
@@ -121,7 +122,7 @@ export const skillCategories = [
 export const projects = [
   {
     title: "MTR Extraction System",
-    type: "Document AI · LLM Automation",
+    type: "Document AI / LLM Automation",
     description:
       "An AI-powered document extraction workflow for industrial Material Test Report PDFs, converting complex unstructured documents into reliable structured data.",
     stack: ["LLMs", "Prompt Engineering", "PDF Processing", "JSON Extraction", "Validation Logic", "n8n"],
@@ -133,21 +134,21 @@ export const projects = [
     link: "https://github.com/ijassandhu",
   },
   {
-    title: "AIVA – Multimodal Vision AI Assistant",
-    type: "Multimodal AI · Voice Interface",
+    title: "AIVA - Multimodal Vision AI Assistant",
+    type: "Multimodal AI / Voice Interface",
     description:
       "A multimodal AI assistant combining voice input, image understanding, LLM reasoning, and audio responses.",
     stack: ["Groq", "OpenAI", "Vision Models", "Speech-to-Text", "Text-to-Speech", "Gradio", "Python"],
     bullets: [
       "Engineered a pipeline combining speech recognition, vision models, and LLM inference.",
-      "Built an STT → Vision → LLM → TTS flow for voice-driven image interaction.",
+      "Built an STT to Vision to LLM to TTS flow for voice-driven image interaction.",
       "Developed a Gradio interface supporting image upload, voice queries, and audio responses.",
     ],
     link: "https://github.com/ijassandhu",
   },
   {
-    title: "Medibot – Medical Knowledge RAG",
-    type: "RAG · Knowledge Retrieval",
+    title: "Medibot - Medical Knowledge RAG System",
+    type: "RAG / Knowledge Retrieval",
     description:
       "A retrieval-augmented generation system for question answering over medical knowledge documents.",
     stack: ["Python", "LangChain", "FAISS", "Streamlit", "Hugging Face"],

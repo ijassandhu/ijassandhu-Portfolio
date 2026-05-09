@@ -18,12 +18,33 @@
 
 html {
   scroll-behavior: smooth;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
   background-color: #f7f8f8;
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.scroll-experience section {
+  scroll-margin-top: 72px;
+}
+
+::selection {
+  background: rgba(79, 133, 139, 0.2);
+}
+
+:focus-visible {
+  outline: 2px solid #a9bec1;
+  outline-offset: 3px;
 }
 
 ::-webkit-scrollbar {
@@ -41,4 +62,35 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
   background: #3a666b;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+.clip-dark,
+.clip-light {
+  clip-path: none;
+}
+
+.experience-line-progress {
+  transform: scaleY(0);
+}
+
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .clip-dark,
+  .clip-light {
+    clip-path: circle(0% at 50% 50%);
+    will-change: clip-path;
+  }
+
+  .selected-card,
+  .archive-card,
+  .story-card,
+  .hero-copy,
+  .hero-image-card {
+    will-change: transform, opacity;
+  }
 }
