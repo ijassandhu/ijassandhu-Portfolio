@@ -13,24 +13,33 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Jaskeerat Singh — AI Engineer",
+  title: "Jaskeerat Singh | AI Engineer",
   description:
-    "AI Engineer building intelligent automation systems using LLMs, RAG pipelines, document AI, and workflow automation.",
+    "AI Engineer based in Chandigarh, India building LLM applications, RAG pipelines, Document AI systems, and AI automation workflows.",
   keywords: [
+    "Jaskeerat Singh",
     "AI Engineer",
-    "LLM",
-    "RAG",
-    "Machine Learning",
-    "Portfolio",
-    "Automation",
+    "LLM Engineer",
+    "RAG Developer",
+    "Document AI",
+    "AI Automation",
+    "LangChain",
+    "Next.js",
+    "Python",
     "Chandigarh",
   ],
   authors: [{ name: "Jaskeerat Singh" }],
   openGraph: {
-    title: "Jaskeerat Singh — AI Engineer",
+    title: "Jaskeerat Singh | AI Engineer",
     description:
-      "AI Engineer building intelligent automation systems using LLMs, RAG pipelines, and document AI.",
+      "AI Engineer building practical LLM, RAG, Document AI, and automation systems.",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Jaskeerat Singh | AI Engineer",
+    description:
+      "AI Engineer building practical LLM, RAG, Document AI, and automation systems.",
   },
 };
 

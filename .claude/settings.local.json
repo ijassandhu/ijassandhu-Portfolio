@@ -11,7 +11,9 @@
       "Bash(npm run *)",
       "Bash(Start-Sleep -Seconds 8)",
       "Bash(Get-Content \"C:\\\\Users\\\\91623\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-91623-Desktop-A-I-Project-PortFolio\\\\2fc33b90-81ef-4c57-9cf2-870397e0922d\\\\tasks\\\\buvpx1ih8.output\" -ErrorAction SilentlyContinue)",
-      "Bash(Select-Object -Last 20)"
+      "Bash(Select-Object -Last 20)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
     ]
   }
 }
