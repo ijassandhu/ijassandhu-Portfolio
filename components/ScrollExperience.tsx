@@ -349,76 +349,56 @@ function ExperienceCard({
 }
 
 function ContactForm() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
-  const [submitted, setSubmitted] = useState(false);
-  const [copied, setCopied] = useState(false);
-
-  const messageText = `Portfolio inquiry
-
-Name: ${form.name}
-Email: ${form.email}
-
-${form.message}`;
-
-  const copyText = async (text: string) => {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(text);
-      return true;
-    }
-
-    return false;
-  };
+  const [form, setForm] = useState({ name: "", email: "", message: "", website: "" });
+  const [submitState, setSubmitState] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const didCopy = await copyText(messageText);
-    setCopied(didCopy);
-    setSubmitted(true);
+
+    setSubmitState("sending");
+    setSubmitMessage("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const result = (await response.json()) as { error?: string; ok?: boolean };
+
+      if (!response.ok || !result.ok) {
+        throw new Error(result.error || "Message could not be sent right now.");
+      }
+
+      setSubmitState("sent");
+      setForm({ name: "", email: "", message: "", website: "" });
+    } catch (error) {
+      setSubmitState("error");
+      setSubmitMessage(
+        error instanceof Error
+          ? error.message
+          : "Message could not be sent right now."
+      );
+    }
   };
 
-  if (submitted) {
+  if (submitState === "sent") {
     return (
       <div className="contact-reveal flex min-h-[320px] flex-col items-center justify-center rounded-lg border border-[#e5e7eb] bg-white p-8 text-center shadow-[0_18px_55px_rgba(17,24,39,0.07)]">
         <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-[#f7f8f8] text-[#4f858b]">
           <Send size={20} />
         </span>
-        <h3 className="mb-2 text-lg font-black text-[#111827]">
-          {copied ? "Message copied" : "Message ready"}
-        </h3>
+        <h3 className="mb-2 text-lg font-black text-[#111827]">Message sent</h3>
         <p className="max-w-sm text-sm leading-7 text-[#4b5563]">
-          {copied
-            ? "No mail app was opened. Paste the copied message into your preferred email or LinkedIn."
-            : "No mail app was opened. Copy the email address below and send the message from your preferred app."}
+          Thanks for reaching out. Your message has been saved and I will review it soon.
         </p>
-        <textarea
-          className="mt-5 min-h-[132px] w-full max-w-md resize-none rounded-lg border border-[#e5e7eb] bg-[#f7f8f8] px-4 py-3 text-left text-sm leading-6 text-[#4b5563] outline-none focus:border-[#a9bec1]"
-          onFocus={(event) => event.currentTarget.select()}
-          readOnly
-          value={messageText}
-        />
-        <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-          <button
-            className="inline-flex h-10 items-center justify-center rounded-full bg-[#111827] px-5 text-sm font-bold text-white transition-colors hover:bg-[#1f2937]"
-            onClick={() => void copyText(personalInfo.email)}
-            type="button"
-          >
-            Copy email
-          </button>
-          <a
-            className="inline-flex h-10 items-center justify-center rounded-full border border-[#e5e7eb] bg-white px-5 text-sm font-bold text-[#4f858b] transition-colors hover:border-[#a9bec1] hover:text-[#3a666b]"
-            href={personalInfo.linkedin}
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            LinkedIn
-          </a>
-        </div>
         <button
-          className="mt-5 text-sm font-bold text-[#4f858b]"
+          className="mt-6 text-sm font-bold text-[#4f858b]"
           onClick={() => {
-            setSubmitted(false);
-            setCopied(false);
-            setForm({ name: "", email: "", message: "" });
+            setSubmitState("idle");
+            setSubmitMessage("");
           }}
           type="button"
         >
@@ -454,6 +434,7 @@ ${form.message}`;
             onChange={(event) => setForm({ ...form, email: event.target.value })}
             placeholder="your@email.com"
             required
+            suppressHydrationWarning
             type="email"
             value={form.email}
           />
@@ -470,13 +451,32 @@ ${form.message}`;
           value={form.message}
         />
       </label>
+      <input
+        aria-hidden="true"
+        autoComplete="off"
+        className="hidden"
+        onChange={(event) => setForm({ ...form, website: event.target.value })}
+        tabIndex={-1}
+        type="text"
+        value={form.website}
+      />
+      {submitState === "error" ? (
+        <p className="mt-4 rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-sm font-medium leading-6 text-red-700">
+          {submitMessage} You can still reach me directly at{" "}
+          <a className="underline" href={`mailto:${personalInfo.email}`}>
+            {personalInfo.email}
+          </a>
+          .
+        </p>
+      ) : null}
       <motion.button
-        className="mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-[#111827] px-6 text-sm font-bold text-white transition-colors hover:bg-[#1f2937] sm:w-auto"
+        className="mt-5 inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-[#111827] px-6 text-sm font-bold text-white transition-colors hover:bg-[#1f2937] disabled:cursor-not-allowed disabled:bg-[#6b7280] sm:w-auto"
+        disabled={submitState === "sending"}
         type="submit"
         whileHover={{ y: -2 }}
         whileTap={{ scale: 0.98 }}
       >
-        Copy Message <Send size={15} />
+        {submitState === "sending" ? "Sending..." : "Send Message"} <Send size={15} />
       </motion.button>
     </form>
   );

@@ -16,6 +16,22 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact Form
+
+The contact form posts to `app/api/contact/route.ts` and stores messages in MongoDB.
+Set these server-side environment variables locally and in deployment:
+
+```bash
+MONGODB_URI=mongodb+srv://<username>:<password>@<cluster-url>/?retryWrites=true&w=majority
+MONGODB_DB=portfolio
+MONGODB_MESSAGES_COLLECTION=messages
+```
+
+`MONGODB_DB` defaults to `portfolio` and `MONGODB_MESSAGES_COLLECTION` defaults to `messages` if omitted.
+Do not prefix these variables with `NEXT_PUBLIC_`; they should stay server-only.
+
+To view submissions, open MongoDB Atlas, go to **Database > Browse Collections**, then open the configured database and collection. Each message is stored with `name`, `email`, `message`, `status`, `source`, `createdAt`, and basic request metadata.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
