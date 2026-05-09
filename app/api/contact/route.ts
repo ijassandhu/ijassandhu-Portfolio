@@ -39,6 +39,15 @@ function getErrorDetails(error: unknown) {
   }
 
   if (
+    lowerMessage.includes("ssl") ||
+    lowerMessage.includes("tls") ||
+    lowerMessage.includes("certificate") ||
+    lowerMessage.includes("alert internal error")
+  ) {
+    return { errorName, errorMessage, code: "MONGODB_TLS_OR_NETWORK_ERROR" };
+  }
+
+  if (
     lowerMessage.includes("econnrefused") ||
     lowerMessage.includes("enotfound") ||
     lowerMessage.includes("querysrv")

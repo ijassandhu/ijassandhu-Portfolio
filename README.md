@@ -30,6 +30,8 @@ MONGODB_MESSAGES_COLLECTION=messages
 `MONGODB_DB` defaults to `portfolio` and `MONGODB_MESSAGES_COLLECTION` defaults to `messages` if omitted.
 Do not prefix these variables with `NEXT_PUBLIC_`; they should stay server-only.
 
+For Vercel, redeploy after changing environment variables. If Atlas rejects the request with a TLS or network error, confirm that **Atlas > Network Access** allows Vercel to connect. The simplest production setup is to allow `0.0.0.0/0` in Atlas Network Access, then keep the database user password strong. This project pins Node to `22.x` in `package.json`; after redeploying, Vercel function logs should no longer show `nodejs24.x`.
+
 To view submissions, open MongoDB Atlas, go to **Database > Browse Collections**, then open the configured database and collection. Each message is stored with `name`, `email`, `message`, `status`, `source`, `createdAt`, and basic request metadata.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
