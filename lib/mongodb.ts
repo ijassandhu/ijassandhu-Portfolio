@@ -8,9 +8,45 @@ const options: MongoClientOptions = {
   serverSelectionTimeoutMS: 5000,
 };
 
+const TLS_PARAM_PATTERN = /[?&](tls|ssl)=/i;
+
 declare global {
   var mongoClient: MongoClient | undefined;
   var mongoClientPromise: Promise<MongoClient> | undefined;
+}
+
+function appendUriParam(uri: string, key: string, value: string) {
+  if (uri.endsWith("?") || uri.endsWith("&")) {
+    return `${uri}${key}=${value}`;
+  }
+
+  return `${uri}${uri.includes("?") ? "&" : "?"}${key}=${value}`;
+}
+
+function shouldForceAtlasTls(uri: string) {
+  return (
+    uri.startsWith("mongodb://") &&
+    uri.includes(".mongodb.net") &&
+    !TLS_PARAM_PATTERN.test(uri)
+  );
+}
+
+function getNormalizedMongoUri(uri: string) {
+  return shouldForceAtlasTls(uri) ? appendUriParam(uri, "tls", "true") : uri;
+}
+
+export function getMongoConnectionInfo() {
+  const uri = process.env.MONGODB_URI || "";
+
+  return {
+    connectionFormat: uri.startsWith("mongodb+srv://") ? "srv" : "direct",
+    atlasHost: uri.includes(".mongodb.net"),
+    tlsConfigured:
+      uri.startsWith("mongodb+srv://") ||
+      /[?&](tls|ssl)=true/i.test(uri) ||
+      shouldForceAtlasTls(uri),
+    tlsAddedByApp: shouldForceAtlasTls(uri),
+  };
 }
 
 export function getMongoClient() {
@@ -24,7 +60,7 @@ export function getMongoClient() {
     return Promise.resolve(globalThis.mongoClient);
   }
 
-  globalThis.mongoClientPromise ??= new MongoClient(uri, options)
+  globalThis.mongoClientPromise ??= new MongoClient(getNormalizedMongoUri(uri), options)
     .connect()
     .then((client) => {
       globalThis.mongoClient = client;

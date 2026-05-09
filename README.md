@@ -32,6 +32,8 @@ Do not prefix these variables with `NEXT_PUBLIC_`; they should stay server-only.
 
 For Vercel, redeploy after changing environment variables. If Atlas rejects the request with a TLS or network error, confirm that **Atlas > Network Access** allows Vercel to connect. The simplest production setup is to allow `0.0.0.0/0` in Atlas Network Access, then keep the database user password strong. This project pins Node to `22.x` in `package.json`; after redeploying, Vercel function logs should no longer show `nodejs24.x`.
 
+If you use a direct Atlas URL that starts with `mongodb://`, include `tls=true` in the query string. The app also adds this automatically for direct `.mongodb.net` URLs, but keeping it in Vercel makes the production configuration easier to understand.
+
 To view submissions, open MongoDB Atlas, go to **Database > Browse Collections**, then open the configured database and collection. Each message is stored with `name`, `email`, `message`, `status`, `source`, `createdAt`, and basic request metadata.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.

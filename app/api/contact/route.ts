@@ -1,4 +1,4 @@
-import { getMongoClient } from "@/lib/mongodb";
+import { getMongoClient, getMongoConnectionInfo } from "@/lib/mongodb";
 
 export const runtime = "nodejs";
 export const maxDuration = 10;
@@ -112,13 +112,12 @@ export async function POST(request: Request) {
     });
   } catch (error) {
     const details = getErrorDetails(error);
+    const connectionInfo = getMongoConnectionInfo();
 
     console.error("MongoDB contact insert failed", {
       dbName,
       collectionName,
-      connectionFormat: process.env.MONGODB_URI?.startsWith("mongodb+srv://")
-        ? "srv"
-        : "direct",
+      ...connectionInfo,
       errorName: details.errorName,
       errorMessage: details.errorMessage,
       code: details.code,
