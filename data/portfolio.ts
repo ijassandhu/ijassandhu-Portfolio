@@ -10,7 +10,7 @@ export const personalInfo = {
 } as const;
 
 export const heroContent = {
-  eyebrow: "AI Engineer / LLM Systems / RAG / Document AI",
+  eyebrow: "AI ENGINEER / RETRIEVAL SYSTEMS / AUTOMATION",
   headline: "Building practical AI systems with LLMs, RAG, and automation.",
   paragraph:
     "I build AI-powered applications for document intelligence, retrieval systems, and workflow automation.",
