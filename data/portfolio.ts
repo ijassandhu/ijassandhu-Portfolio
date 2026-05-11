@@ -11,9 +11,9 @@ export const personalInfo = {
 
 export const heroContent = {
   eyebrow: "AI ENGINEER / RETRIEVAL SYSTEMS / AUTOMATION",
-  headline: "Building practical AI systems with LLMs, RAG, and automation.",
+  headline: "Building production-oriented AI systems for retrieval, document intelligence, and workflow automation.",
   paragraph:
-    "I build AI-powered applications for document intelligence, retrieval systems, and workflow automation.",
+    "Focused on document extraction pipelines, retrieval systems, and AI workflows that integrate into real operational processes.",
   supporting:
     "Based in Chandigarh, India. Open to AI Engineer roles, freelance AI automation projects, and collaborations.",
 } as const;

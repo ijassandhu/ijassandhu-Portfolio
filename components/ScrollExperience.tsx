@@ -1252,7 +1252,7 @@ export default function ScrollExperience() {
           About
         </OutlineWord>
         <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-10 lg:min-h-[250vh] lg:grid-cols-[320px_minmax(0,1fr)] lg:gap-16">
-          <aside className="mobile-reveal lg:sticky lg:top-[84px] lg:flex lg:h-[calc(100vh-84px)] lg:items-center">
+          <aside className="hidden lg:sticky lg:top-[84px] lg:flex lg:h-[calc(100vh-84px)] lg:items-center">
             <div className="w-full rounded-lg border border-[#e5e7eb] bg-white p-4 shadow-[0_18px_55px_rgba(17,24,39,0.08)]">
               <div className="relative mb-5 aspect-[4/5] overflow-hidden rounded-lg bg-[#e5e7eb]">
                 <Image
