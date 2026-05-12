@@ -131,7 +131,7 @@ export const projects = [
       "Used prompt engineering, validation, and retry logic to improve output reliability.",
       "Focused on structured JSON outputs for automated business workflows.",
     ],
-    link: "https://github.com/ijassandhu",
+    link: "https://github.com/ijassandhu/Brannon-Steel",
   },
   {
     title: "AIVA - Multimodal Vision AI Assistant",
@@ -144,7 +144,7 @@ export const projects = [
       "Built an STT to Vision to LLM to TTS flow for voice-driven image interaction.",
       "Developed a Gradio interface supporting image upload, voice queries, and audio responses.",
     ],
-    link: "https://github.com/ijassandhu",
+    link: "https://github.com/ijassandhu/AIVA",
   },
   {
     title: "Medibot - Medical Knowledge RAG System",
@@ -157,6 +157,6 @@ export const projects = [
       "Implemented embeddings and semantic search using FAISS.",
       "Designed query reformulation to improve retrieval accuracy.",
     ],
-    link: "https://github.com/ijassandhu",
+    link: "https://github.com/ijassandhu/Medibot",
   },
 ] as const;
