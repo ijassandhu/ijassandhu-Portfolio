@@ -6,7 +6,7 @@ export const personalInfo = {
   github: "https://github.com/ijassandhu",
   linkedin: "https://www.linkedin.com/in/jaskeerat-singh-77b3b3260/",
   resume:
-    "https://drive.google.com/drive/folders/13RuRoCBNiPuOESRwF1evTyHmXIps8eol",
+    "https://drive.google.com/file/d/1duJKH-nCWsQop9CJTUpe8dp_22dS9EnQ/view?usp=drive_link",
 } as const;
 
 export const heroContent = {
